@@ -14,6 +14,8 @@
 
 class IDataService {
 public:
+
+    // Needed so derived class destructors run correctly.
     virtual ~IDataService() = default;
 
     // Returns false if username taken.
@@ -21,7 +23,7 @@ public:
         const std::string& username,
         const std::string& password) = 0;
 
-     // Returns nullptr if credentials are wrong.
+    // Returns nullptr if credentials are wrong.
     virtual std::shared_ptr<User> loginUser(
         const std::string& username,
         const std::string& password) = 0;
@@ -31,11 +33,11 @@ public:
         const std::string& name,
         int userID) = 0;
 
-     // Every user sees every room.
+    // Every user sees every room.
     virtual std::vector<std::shared_ptr<Room>>
         getAllRooms() = 0;
 
-    // Safe to call multiple times
+    // Safe to call multiple times.
     virtual bool joinRoom(
         int userID,
         int roomID) = 0;
@@ -47,7 +49,7 @@ public:
         const std::string& content,
         const std::string& senderName) = 0;
 
-     // Called every 2 seconds by QTimer.
+    // Called every 2 seconds by QTimer.
     virtual std::vector<std::shared_ptr<Message>>
         getMessages(int roomID) = 0;
 
