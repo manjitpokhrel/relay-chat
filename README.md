@@ -37,13 +37,11 @@ Currently, Relay functions as a fully operational local prototype where multiple
 
 ```text
 main
-│
-├── dev
-│
-├── feature/database    → Deepika
-├── feature/models      → Yubik
-├── feature/gui         → Adyut
-└── feature/testing     → Prasun
+├── dev                 
+├── feature/database  
+├── feature/models      
+├── feature/gui         
+└── feature/testing     
 ```
 
 ### Workflow
