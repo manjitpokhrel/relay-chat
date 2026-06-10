@@ -54,3 +54,18 @@ void DatabaseManager::initializeTables() {
         "PRIMARY KEY (room_id, user_id))"
     );
 }
+bool DatabaseManager::registerUser(const std::string& username,
+                                    const std::string& password) {
+    QSqlQuery query;
+    query.prepare(
+        "INSERT INTO users (username, password_hash) VALUES (?, ?)"
+    );
+    query.addBindValue(QString::fromStdString(username));
+    query.addBindValue(QString::fromStdString(password));
+
+    if (!query.exec()) {
+        qDebug() << "Register error:" << query.lastError().text();
+        return false;
+    }
+    return true;
+}
