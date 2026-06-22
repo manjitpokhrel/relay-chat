@@ -51,3 +51,31 @@ bool RemoteDataService::joinRoom(
     // TODO: POST /rooms/:id/join
     return false;
 }
+
+// ─── Messages ──────────────────────────────────────────
+
+bool RemoteDataService::saveMessage(
+    int roomID,
+    int userID,
+    const std::string& content,
+    const std::string& senderName) {
+    (void)roomID;
+    (void)userID;
+    (void)content;
+    (void)senderName;
+    // TODO: POST /rooms/:id/messages
+    return false;
+}
+
+std::vector<std::shared_ptr<Message>>
+RemoteDataService::getMessages(int roomID) {
+    (void)roomID;
+    // TODO: GET /rooms/:id/messages
+    return {};
+}
+
+bool RemoteDataService::clearRoomMessages(int roomID) {
+    (void)roomID;
+    // TODO: DELETE /rooms/:id/messages
+    return false;
+}
