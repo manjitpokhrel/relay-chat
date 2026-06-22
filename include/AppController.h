@@ -10,9 +10,7 @@
 #include <string>
 
 // Brain of the application.
-// Sits between GUI and data layer.
 // GUI never calls database directly.
-// Everything flows through here.
 class AppController {
 private:
     std::unique_ptr<IDataService> service;
@@ -22,6 +20,17 @@ private:
 public:
     explicit AppController(
         std::unique_ptr<IDataService> service);
+
+    // Auth
+    bool login(
+        const std::string& username,
+        const std::string& password);
+
+    bool registerUser(
+        const std::string& username,
+        const std::string& password);
+
+    void logout();
 };
 
 #endif
