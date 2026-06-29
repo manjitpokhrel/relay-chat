@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "AppController.h"
 #include "LocalDataService.h"
+// #include "RemoteDataService.h"
 #include "LoginWindow.h"
 #include "ChatWindow.h"
 
@@ -8,7 +9,6 @@ int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     app.setStyle("Fusion");
 
-    // Dark theme palette
     QPalette darkPalette;
     darkPalette.setColor(
         QPalette::Window, QColor(54, 57, 63));
@@ -25,6 +25,21 @@ int main(int argc, char* argv[]) {
     darkPalette.setColor(
         QPalette::Highlight, QColor(88, 101, 242));
     app.setPalette(darkPalette);
+
+    // ─────────────────────────────────────────────────
+    // SWITCH SERVICE HERE
+    // Local  → SQLite on disk
+    // Remote → AWS RDS via server
+    // ─────────────────────────────────────────────────
+    auto service = std::make_unique<LocalDataService>(
+        "relay.db"
+    );
+
+    // auto service = std::make_unique<RemoteDataService>(
+    //     "http://your-server-url"
+    // );
+
+    AppController controller(std::move(service));
 
     return app.exec();
 }
