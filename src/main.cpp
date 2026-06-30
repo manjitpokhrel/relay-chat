@@ -41,5 +41,24 @@ int main(int argc, char* argv[]) {
 
     AppController controller(std::move(service));
 
+    // Show login window first
+    auto* loginWindow = new LoginWindow(&controller);
+    loginWindow->setWindowTitle("Relay — Login");
+    loginWindow->setFixedSize(400, 350);
+    loginWindow->show();
+
+    // When login succeeds, close login and open chat
+    QObject::connect(
+        loginWindow,
+        &LoginWindow::loginSuccessful,
+        [&]() {
+            loginWindow->close();
+            auto* chatWindow = new ChatWindow(&controller);
+            chatWindow->setWindowTitle("Relay Chat");
+            chatWindow->resize(1000, 700);
+            chatWindow->show();
+        }
+    );
+
     return app.exec();
 }
