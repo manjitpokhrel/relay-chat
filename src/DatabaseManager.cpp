@@ -69,3 +69,37 @@ bool DatabaseManager::registerUser(const std::string& username,
     }
     return true;
 }
+std::shared_ptr<User> DatabaseManager::loginUser(
+    const std::string& username,
+    const std::string& password) {
+
+    QSqlQuery query;
+    query.prepare(
+        "SELECT id, username, password_hash FROM users "
+        "WHERE username = ? AND password_hash = ?"
+    );
+    query.addBindValue(QString::fromStdString(username));
+    query.addBindValue(QString::fromStdString(password));
+
+    if (query.exec() && query.next()) {
+        int id = query.value(0).toInt();
+        std::string uname = query.value(1).toString().toStdString();
+        std::string hash = query.value(2).toString().toStdString();
+        return std::make_shared<User>(id, uname, hash);
+    }
+    return nullptr;
+}
+
+bool DatabaseManager::createRoom(const std::string& name,
+                                  int userID) {
+    QSqlQuery query;
+    query.prepare(
+        "INSERT INTO rooms (name, created_by) VALUES (?, ?)"
+    );
+    query.addBindValue(QString::fromStdString(name));
+    query.addBindValue(userID);
+
+    if (!query.exec()) {
+        qDebug() << "Create room error:" << query.lastError().text();
+        return false;
+    }
