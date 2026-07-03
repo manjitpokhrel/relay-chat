@@ -1,0 +1,5 @@
+F:/codes/relay/relay-chat/build/CMakeFiles/Relay.dir
+F:/codes/relay/relay-chat/build/CMakeFiles/edit_cache.dir
+F:/codes/relay/relay-chat/build/CMakeFiles/rebuild_cache.dir
+F:/codes/relay/relay-chat/build/CMakeFiles/Relay_autogen_timestamp_deps.dir
+F:/codes/relay/relay-chat/build/CMakeFiles/Relay_autogen.dir

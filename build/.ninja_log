@@ -1,0 +1,16 @@
+# ninja log v7
+27	804	8025550570930457	Relay_autogen/timestamp	e1709cf6292dc4c9
+27	804	8025550570930457	Relay_autogen/mocs_compilation.cpp	e1709cf6292dc4c9
+27	804	8025550570930457	F:/codes/relay/relay-chat/build/Relay_autogen/timestamp	e1709cf6292dc4c9
+27	804	8025550570930457	F:/codes/relay/relay-chat/build/Relay_autogen/mocs_compilation.cpp	e1709cf6292dc4c9
+829	996	8025550571683880	CMakeFiles/Relay.dir/src/Message.cpp.obj	a184859e26466862
+820	1192	8025550571591248	CMakeFiles/Relay.dir/src/User.cpp.obj	1b796ca564d24466
+824	1297	8025550571633776	CMakeFiles/Relay.dir/src/Room.cpp.obj	af94343bd19cd10b
+840	2326	8025550571793846	CMakeFiles/Relay.dir/src/AppController.cpp.obj	dd6f4e1a4691da6
+835	2459	8025550571743853	CMakeFiles/Relay.dir/src/DatabaseManager.cpp.obj	9c1e60fe24a3cf36
+858	2492	8025550571966543	CMakeFiles/Relay.dir/src/CreateRoomDialog.cpp.obj	8f9eb130f91877fa
+846	2597	8025550571861731	CMakeFiles/Relay.dir/src/LoginWindow.cpp.obj	91d24ef47221c2e3
+810	2733	8025550571491190	CMakeFiles/Relay.dir/Relay_autogen/mocs_compilation.cpp.obj	c526bdcc734a4f78
+815	2762	8025550571541226	CMakeFiles/Relay.dir/src/main.cpp.obj	27820c47230f3598
+852	2891	8025550571911714	CMakeFiles/Relay.dir/src/ChatWindow.cpp.obj	4389c926010e31c7
+2891	3087	8025550592307339	Relay.exe	142ad5c692cf72a0

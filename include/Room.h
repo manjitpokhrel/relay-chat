@@ -6,14 +6,14 @@
 #include <string>
 #include <vector>
 #include <memory>
-usibng namespace std;
+using namespace std;
 
-class Riin : public BaseEntity {
+class Room : public BaseEntity {
 
     private: 
     string name;
     int createdBy; 
-    vector<shared_prt<Message>> messages;
+    vector<shared_ptr<Message>> messages;
 
     public:
     Room (int id , const string& name , int createdBy) : BaseEntity(id), name(name), createdBy(createdBy) {}
@@ -21,16 +21,16 @@ class Riin : public BaseEntity {
     string getName() const { return name; }
     int getCreatedBy() const { return createdBy; }
     
-    void addmessage(shared_prt <Message> message) {
-        messages.push_back(message);
-    }
+    void addMessage(shared_ptr<Message> message) {
+    messages.push_back(message);
+}
     
- vector <shared_prt <Message>> getMessages() const {
+    vector<shared_ptr<Message>> getMessages() const {
         return messages;
     }
 
     string toString() const override {
-        return "Room [" + to_string (id) + "]: " + name;
+        return "Room [" + to_string(id) + "]: " + name;
     }
 };
 #endif

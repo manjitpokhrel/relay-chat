@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"F:/codes/relay/relay-chat/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
