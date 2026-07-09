@@ -54,7 +54,10 @@ void DatabaseManager::initializeTables() {
         "PRIMARY KEY (room_id, user_id))"
     );
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
 bool DatabaseManager::registerUser(const std::string& username,
                                     const std::string& password) {
     QSqlQuery query;
@@ -70,7 +73,10 @@ bool DatabaseManager::registerUser(const std::string& username,
     }
     return true;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
 std::shared_ptr<User> DatabaseManager::loginUser(
     const std::string& username,
     const std::string& password) {
@@ -105,6 +111,7 @@ bool DatabaseManager::createRoom(const std::string& name,
         qDebug() << "Create room error:" << query.lastError().text();
         return false;
     }
+<<<<<<< HEAD
 
     int roomID = query.lastInsertId().toInt();
     return joinRoom(userID, roomID);
@@ -202,3 +209,5 @@ bool DatabaseManager::clearRoomMessages(int roomID) {
     }
     return true;
 }
+=======
+>>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
