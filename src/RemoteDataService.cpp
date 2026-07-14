@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+#include "Message.h"
+
+
+=======
 #include "RemoteDataService.h"
 
 RemoteDataService::RemoteDataService(
@@ -79,3 +84,4 @@ bool RemoteDataService::clearRoomMessages(int roomID) {
     // TODO: DELETE /rooms/:id/messages
     return false;
 }
+>>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
