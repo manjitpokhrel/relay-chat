@@ -3,7 +3,7 @@
 
 #include "httplib.h"
 #include "RequestHandler.h"
-#include "ServerDB.h"
+#include "Server.h"
 #include <memory>
 #include <string>
 
