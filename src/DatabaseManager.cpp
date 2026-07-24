@@ -1,4 +1,7 @@
 #include "DatabaseManager.h"
+#include <QDebug>
+#include <QSqlError>
+#include <QSqlQuery>
 #include <QVariant>
 
 DatabaseManager::DatabaseManager(const QString& dbPath) {
@@ -15,7 +18,9 @@ DatabaseManager::DatabaseManager(const QString& dbPath) {
 }
 
 DatabaseManager::~DatabaseManager() {
-    if (db.isOpen()) db.close();
+    if (db.isOpen()) {
+        db.close();
+    }
 }
 
 void DatabaseManager::initializeTables() {
@@ -54,10 +59,7 @@ void DatabaseManager::initializeTables() {
         "PRIMARY KEY (room_id, user_id))"
     );
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
 bool DatabaseManager::registerUser(const std::string& username,
                                     const std::string& password) {
     QSqlQuery query;
@@ -73,14 +75,9 @@ bool DatabaseManager::registerUser(const std::string& username,
     }
     return true;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5
-std::shared_ptr<User> DatabaseManager::loginUser(
-    const std::string& username,
-    const std::string& password) {
-
+std::shared_ptr<User> DatabaseManager::loginUser(const std::string& username,
+                                                 const std::string& password) {
     QSqlQuery query;
     query.prepare(
         "SELECT id, username, password_hash FROM users "
@@ -98,8 +95,7 @@ std::shared_ptr<User> DatabaseManager::loginUser(
     return nullptr;
 }
 
-bool DatabaseManager::createRoom(const std::string& name,
-                                  int userID) {
+bool DatabaseManager::createRoom(const std::string& name, int userID) {
     QSqlQuery query;
     query.prepare(
         "INSERT INTO rooms (name, created_by) VALUES (?, ?)"
@@ -111,7 +107,6 @@ bool DatabaseManager::createRoom(const std::string& name,
         qDebug() << "Create room error:" << query.lastError().text();
         return false;
     }
-<<<<<<< HEAD
 
     int roomID = query.lastInsertId().toInt();
     return joinRoom(userID, roomID);
@@ -203,11 +198,8 @@ bool DatabaseManager::clearRoomMessages(int roomID) {
     query.addBindValue(roomID);
 
     if (!query.exec()) {
-        qDebug() << "Clear messages error:"
-                 << query.lastError().text();
+        qDebug() << "Clear messages error:" << query.lastError().text();
         return false;
     }
     return true;
 }
-=======
->>>>>>> 70d55099947c2fb834270d18a27649e7a233efd5

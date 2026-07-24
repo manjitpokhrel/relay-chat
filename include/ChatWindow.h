@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QLabel>
 #include <QMessageBox>
+#include <QScrollBar>
 
 class AppController;
 

@@ -1,64 +1,21 @@
-#include <QApplication>
-#include "AppController.h"
-#include "LocalDataService.h"
-#include "RemoteDataService.h"
-#include "LoginWindow.h"
-#include "ChatWindow.h"
+#include "Server.h"
+#include "ServerDB.h"
+#include <iostream>
 
 int main(int argc, char* argv[]) {
-    QApplication app(argc, argv);
-    app.setStyle("Fusion");
+    std::cout << "Starting Relay Server on port 8080..." << std::endl;
 
-    QPalette darkPalette;
-    darkPalette.setColor(
-        QPalette::Window, QColor(54, 57, 63));
-    darkPalette.setColor(
-        QPalette::WindowText, Qt::white);
-    darkPalette.setColor(
-        QPalette::Base, QColor(64, 68, 75));
-    darkPalette.setColor(
-        QPalette::Text, Qt::white);
-    darkPalette.setColor(
-        QPalette::Button, QColor(88, 101, 242));
-    darkPalette.setColor(
-        QPalette::ButtonText, Qt::white);
-    darkPalette.setColor(
-        QPalette::Highlight, QColor(88, 101, 242));
-    app.setPalette(darkPalette);
+    // Initialize database connection/tables
+    ServerDB db("relay_server.db");
 
-    // ── MODE SWITCH ─────────────────────────
-    // Local mode:
-    auto service =
-        std::make_unique<LocalDataService>(
-            "relay.db");
+    // Initialize and start the network server
+    Server server(8080, db);
+    if (server.start()) {
+        std::cout << "Relay Server running successfully." << std::endl;
+    } else {
+        std::cerr << "Failed to start Relay Server." << std::endl;
+        return 1;
+    }
 
-    // Multi-device mode (uncomment below):
-    // auto service =
-    //     std::make_unique<RemoteDataService>(
-    //         "http://SERVER_IP:8080");
-    // ────────────────────────────────────────
-
-    AppController controller(std::move(service));
-
-    auto* loginWindow =
-        new LoginWindow(&controller);
-    loginWindow->setWindowTitle("Relay — Login");
-    loginWindow->setFixedSize(400, 350);
-    loginWindow->show();
-
-    QObject::connect(
-        loginWindow,
-        &LoginWindow::loginSuccessful,
-        [&]() {
-            loginWindow->close();
-            auto* chatWindow =
-                new ChatWindow(&controller);
-            chatWindow->setWindowTitle(
-                "Relay Chat");
-            chatWindow->resize(1000, 700);
-            chatWindow->show();
-        }
-    );
-
-    return app.exec();
+    return 0;
 }

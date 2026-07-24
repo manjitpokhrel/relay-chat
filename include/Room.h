@@ -4,6 +4,7 @@
 #include "BaseEntity.h"
 #include "Message.h"
 #include <string>
+#include <cstddef>
 #include <vector>
 #include <memory>
 using namespace std;

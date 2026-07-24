@@ -2,6 +2,7 @@
 #define REMOTEDATASERVICE_H
 
 #include "IDataService.h"
+#include "httplib.h"
 #include "ClientNetworkManager.h"
 #include <memory>
 #include <string>

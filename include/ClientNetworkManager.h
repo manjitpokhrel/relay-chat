@@ -2,20 +2,19 @@
 #define CLIENTNETWORKMANAGER_H
 
 #include <string>
+#include <map>
 
-// Handles HTTP communication with backend server.
-// Stub for now. Real implementation comes when
-// we move to multi-device with AWS backend.
 class ClientNetworkManager {
-private:
-    std::string baseUrl;
-
 public:
-    explicit ClientNetworkManager(
-        const std::string& baseUrl);
+    explicit ClientNetworkManager(const std::string& serverUrl);
+    ~ClientNetworkManager();
 
-    std::string getBaseUrl() const;
-    bool isConfigured() const;
+    std::string post(const std::string& path, const std::map<std::string, std::string>& params);
+    std::string get(const std::string& path);
+    std::string del(const std::string& path);
+
+private:
+    std::string serverUrl;
 };
 
 #endif
